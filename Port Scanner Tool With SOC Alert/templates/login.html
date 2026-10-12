@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="card">
+        <h2>Login</h2>
+
+        {% if message %}
+            <p class="message">{{ message }}</p>
+        {% endif %}
+
+        <form method="POST">
+            <label>Username</label>
+            <input name="username" required>
+
+            <label>Password</label>
+            <div class="password-wrapper">
+                <input name="password" type="password" id="password" required>
+                <i class="fa-solid fa-eye-slash eye-icon" id="togglePassword"></i>
+            </div>
+
+            <label class="checkbox-label">
+                <input type="checkbox" name="remember">
+                Remember me
+            </label>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <p class="switch-link">Don't have an account? <a href="/signup">Sign up</a></p>
+    </div>
+
+    <script>
+        const togglePassword = document.getElementById("togglePassword");
+        const passwordField = document.getElementById("password");
+
+        togglePassword.addEventListener("click", function () {
+            const isHidden = passwordField.type === "password";
+            passwordField.type = isHidden ? "text" : "password";
+            togglePassword.classList.toggle("fa-eye");
+            togglePassword.classList.toggle("fa-eye-slash");
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SOC Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="card wide">
+        <h2>Mini SOC — Alert Dashboard</h2>
+
+        {% if alerts %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Source IP</th>
+                        <th>Alert</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for alert in alerts|reverse %}
+                    <tr>
+                        <td>{{ alert.time }}</td>
+                        <td>{{ alert.ip }}</td>
+                        <td><span class="badge high">{{ alert.message }}</span></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p class="empty-state">No alerts yet. All clear.</p>
+        {% endif %}
+
+        <div class="nav-links">
+            <a href="/dashboard">Scanner Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>

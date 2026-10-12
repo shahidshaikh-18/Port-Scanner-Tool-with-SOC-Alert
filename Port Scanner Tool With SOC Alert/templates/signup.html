@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="card">
+        <h2>Create Account</h2>
+
+        {% if message %}
+            <p class="message">{{ message }}</p>
+        {% endif %}
+
+        <form method="POST">
+            <label>Username</label>
+            <input name="username" required>
+
+            <label>Password</label>
+            <div class="password-wrapper">
+                <input name="password" type="password" id="password" required>
+                <i class="fa-solid fa-eye-slash eye-icon" id="togglePassword"></i>
+            </div>
+
+            <button type="submit">Sign Up</button>
+        </form>
+
+        <p class="switch-link">Already have an account? <a href="/login">Login</a></p>
+    </div>
+
+    <script>
+        const togglePassword = document.getElementById("togglePassword");
+        const passwordField = document.getElementById("password");
+
+        togglePassword.addEventListener("click", function () {
+            const isHidden = passwordField.type === "password";
+            passwordField.type = isHidden ? "text" : "password";
+            togglePassword.classList.toggle("fa-eye");
+            togglePassword.classList.toggle("fa-eye-slash");
+        });
+    </script>
+</body>
+</html>
