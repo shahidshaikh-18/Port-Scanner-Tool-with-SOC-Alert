@@ -52,7 +52,7 @@ Port-Scanner-Tool-With-SOC-Alert/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/Port-Scanner-Tool-With-SOC-Alert.git
+git clone https://github.com/shahidshaikh-18/Port-Scanner-Tool-With-SOC-Alert.git
 cd Port-Scanner-Tool-With-SOC-Alert
 ```
 
